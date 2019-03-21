@@ -1,2 +1,12 @@
 ### Check for the number of unique values:
 apply(DataFrame,2,function(x) length(unique(x)))
+## Change atribute of fields
+col <- c("low","race","smoke","ptl","ht","ui","ftv")
+for (i in col) {
+  DataFrame[,i]=as.factor(DataFrame[,i])
+}
+# Split data: 70% TrainDF and 30% TestDF
+library(caTools)
+ind <- sample.split(Y= DataFrame$low,SplitRatio = .7)
+trainDF <- DataFrame[ind,]
+testDF <- DataFrame[!ind,]
