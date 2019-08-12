@@ -10,3 +10,25 @@ library(caTools)
 ind <- sample.split(Y= DataFrame$low,SplitRatio = .7)
 trainDF <- DataFrame[ind,]
 testDF <- DataFrame[!ind,]
+## Basic read from web. and create date field from day, Month, Year
+sidc <-fread("http://sidc.be/silso/DATA/SN_d_tot_V2.0.csv",sep = ';')
+colnames(sidc) <- c("Year","Month","Day", "Fdate","Wolf", "Sd","Obs" ,"Defin"  )
+sidc$Ymd <- as.Date(paste(sidc$Year, sidc$Month, sidc$Day, sep = "-"))
+df<-sidc[Ymd>="1850-01-01" & Ymd <="1986-09-30",.(Ymd,Wolf),]
+colnames(df) <- c("ds","y")
+#
+#More sutuff
+m <- prophet(seasonality.mode="multiplicative")
+m <- add_seasonality(m, name="cycle_11year", period=365.25 * 11,fourier.order=5)
+m <- fit.prophet(m, df)
+future <- make_future_dataframe(m,periods=8000,freq="day")
+forecast <- predict(m, future)
+plot(m,forecast)  +ggtitle("SIDC Cycle 23 Prediction Sept. 1986 - Sept. 1996") +ylab("Predicted Mean Wolf(Ra)") +xlab("Years" )
+##
+## Create time series
+##
+library(xts)
+isn.xts <- xts(x = isn$Wolf, order.by = isn$Ymd)
+isn.weekly <- apply.weekly(isn.xts, mean)
+weekly <- as.data.table(isn.weekly)
+colnames(weekly) <-c("Ymd","WWolf")
