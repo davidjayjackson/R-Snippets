@@ -1,3 +1,8 @@
+## Replace missing observations in Sunspot data
+sidc$Station[sidc$Station %in% c(-1)] <-NA
+
+
+
 ### Check for the number of unique values:
 apply(DataFrame,2,function(x) length(unique(x)))
 ## Change atribute of fields
