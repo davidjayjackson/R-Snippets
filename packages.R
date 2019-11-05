@@ -1,15 +1,23 @@
-sudo apt install curl
-sudo apt install libssl-dev
+* sudo apt install curl
+* sudo apt install libcurl4-openssl-dev
+* sudo apt install libssl-dev
+* sudo apt install libxml2-dev
 devtools
-openssl
-curl
-httr
-lubridate
-rvest
-xml2
-sudo apt sqlite
+* openssl
+* curl
+* httr
+* ubridate
+* rvest
+* xml2
+* usethis
+* covr
+* roxygen2
+* rversions
+* dplyr
+* tidyr
+* ggplot2
+* readr
+* purrr
+* data.table
 
-usethis
-covr
-roxygen2
-rversions
+sudo apt sqlite
