@@ -1,6 +1,8 @@
 ## Replace missing observations in Sunspot data
 sidc$Station[sidc$Station %in% c(-1)] <-NA
-
+##
+## Decade calc: David Robinson
+group_by(decade = 10 * (prize_year %% 10),sort=TRUE)
 
 
 ### Check for the number of unique values:
