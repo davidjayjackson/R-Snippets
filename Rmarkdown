@@ -1,0 +1,6 @@
+# Mike Jeziorski @ Slack
+message = FALSE
+warning = FALSE
+include = FALSE
+suppresPackageStartupMessages({library(tidyverse); 
+library(forecasetLM);library(tsibble}))
