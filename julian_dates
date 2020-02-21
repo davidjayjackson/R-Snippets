@@ -1,0 +1,38 @@
+adamhsparks  @ Slack:
+insol::JD(2419789.5, inverse = TRUE)
+
+ scottcame @ Slack:
+library(lubridate)
+#> 
+#> Attaching package: 'lubridate'
+#> The following object is masked from 'package:base':
+#> 
+#>     date
+as_date(2458900.5560185, origin=as_date(-2440588))
+#> [1] "2020-02-20"
+##
+######
+##
+library(lubridate)
+#> 
+#> Attaching package: 'lubridate'
+#> The following object is masked from 'package:base':
+#> 
+#>     date
+epoch <- ymd('0001-11-24') - lubridate::years(4714)
+epoch
+#> [1] "-4713-11-24"
+as.numeric(epoch)
+#> [1] -2440588
+library(lubridate)
+#> 
+#> Attaching package: 'lubridate'
+#> The following object is masked from 'package:base':
+#> 
+#>     date
+epoch <- ymd('0001-11-24') - lubridate::years(4714)
+epoch
+#> [1] "-4713-11-24"
+as.numeric(epoch)
+#> [1] -2440588
+ 
