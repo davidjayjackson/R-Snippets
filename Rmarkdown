@@ -4,3 +4,6 @@ warning = FALSE
 include = FALSE
 suppresPackageStartupMessages({library(tidyverse); 
 library(forecasetLM);library(tsibble}))
+##
+## Insert time stamp in Rmd header Tan @slack
+ `r format(Sys.time(),"formatstuff")`
