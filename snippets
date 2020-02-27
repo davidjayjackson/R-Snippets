@@ -39,3 +39,16 @@ isn.xts <- xts(x = isn$Wolf, order.by = isn$Ymd)
 isn.weekly <- apply.weekly(isn.xts, mean)
 weekly <- as.data.table(isn.weekly)
 colnames(weekly) <-c("Ymd","WWolf")
+##
+##  Replacing "<"
+##
+gsub("[^0-9]", "", "<10")
+as.numeric( gsub("<","", x) )
+
+## Creating Quartly Sunspot Numbers
+## Thomas Cason @ Slack
+One using base R and paste0
+paste0(lubridate::year(alf_ori$Ymd), " ", lubridate::quarter(alf_ori$Ymd), "Qtr")
+#
+A second using glue
+glue::glue("{lubridate::year(alf_ori$Ymd)} {lubridate::quarter(alf_ori$Ymd)}Qtr")
