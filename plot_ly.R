@@ -15,3 +15,8 @@ path = choose.files()
 name = basename(path)
 betelguese = fread(path)
 
+## Example of Plotly scatter plot. with added lines
+
+just.stats %>% plot_ly(x=~Month,y=~Mean,name="Mean",type="scatter",mode="markers") %>%
+        add_lines(x=~Month,y=~Brighter,name="Brighter") %>%
+        add_lines(x=~Month,y=~Fainter,name="Fainter")
