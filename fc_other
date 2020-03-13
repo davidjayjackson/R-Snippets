@@ -1,0 +1,25 @@
+Thanks to Rahul @ Slack
+
+
+library(tidyverse)
+df1 <- tibble(Validation_Flag = LETTERS) 
+df2 <- tibble(Validation_Flag = LETTERS)
+# If you use fct_other by itself
+df1$Validation_Flag <- fct_other(df1$Validation_Flag, keep = c("V", "Z"))
+count(df1, Validation_Flag)
+#> # A tibble: 3 x 2
+#>   Validation_Flag     n
+#>   <fct>           <int>
+#> 1 V                   1
+#> 2 Z                   1
+#> 3 Other              24
+# If you want to use it in a pipe, use it within mutate
+df2 %>% 
+  mutate(Validation_Flag = fct_other(Validation_Flag, keep = c("V", "Z"))) %>% 
+  count(Validation_Flag)
+#> # A tibble: 3 x 2
+#>   Validation_Flag     n
+#>   <fct>           <int>
+#> 1 V                   1
+#> 2 Z                   1
+#> 3 Other              24
