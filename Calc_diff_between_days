@@ -1,0 +1,15 @@
+library(tidyverse)
+df <- read.csv("../Downloads/WHO.csv")
+df <- 
+  df %>% 
+  group_by(Ymd, Country, State) %>%
+  summarise(
+    TotalCases = sum(Confirmed, na.rm=TRUE)
+  ) %>%
+  group_by(Country, State) %>%
+  arrange(desc(Ymd)) %>%
+  mutate(
+    PreviousTotalCases = lead(TotalCases)
+  ) %>%
+  ungroup() %>%
+  na.omit()
