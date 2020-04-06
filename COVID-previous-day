@@ -1,0 +1,15 @@
+JHULATEST <-  JHUDATA %>% 
+  group_by(Date, Countries) %>%
+  summarise(
+    TotalCases = sum(Cases, na.rm=TRUE)
+  ) %>%
+  group_by(Countries) %>%
+  arrange(desc(Date)) %>%
+  mutate(
+    PreviousTotalCases = lead(TotalCases)
+  ) %>%
+  ungroup() %>%
+  na.omit()
+JHULATEST <- JHULATEST %>% mutate(EXP = TotalCases - PreviousTotalCases)
+JHULATEST$Date <- as.character(JHULATEST$Date)
+dbWriteTable(db, "JHULATEST",JHULATEST ,overwrite=TRUE)
