@@ -13,3 +13,13 @@ df <-
   ) %>%
   ungroup() %>%
   na.omit()
+
+## Queston Slack: Thanks to Tyler Grand Smith @ Slack
+
+How can I convert NYTimes "cumulative counts" for us states to daily counts for cases and deaths.
+Here the data for Washington.
+
+# base R
+washington$inc_deaths <- c(washington$deaths[[1]], diff(washington$deaths))
+# dplyr
+washington <- washington %>% mutate(inc_deaths = deaths - lag(deaths))
