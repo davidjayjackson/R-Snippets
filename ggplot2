@@ -1,0 +1,2 @@
+Show vertical lines only: Jorge Mendes @ Slack
+theme(panel.grid.major.y = element_blank(), panel.grid.minor.y = element_blank())
