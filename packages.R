@@ -6,7 +6,7 @@ devtools
 * openssl
 * curl
 * httr
-* ubridate
+* lubridate
 * rvest
 * xml2
 * usethis
