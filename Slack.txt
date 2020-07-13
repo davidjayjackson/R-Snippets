@@ -7,4 +7,10 @@ https://stackoverflow.com/questions/3439478/calculating-summary-statistics-by-da
 Andrew @ Slack
 Maybe something like mutate(week = floor_date(date, unit=“week”))%>% group_by(week) %>% summarise(sum(whatever))
 
-amit @ Slack
+
+Question:
+In "base R (only)"how do I use lag to extract the new cases for each date ? I've tried this:
+
+Andrew @ Slack
+
+US$lag_cases = lag(US$cases, 1) then US[1,5] = US[1,2] then to US$new_cases = US$cases - US$lag_cases
