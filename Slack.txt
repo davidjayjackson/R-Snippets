@@ -1,0 +1,10 @@
+How can I calculate a weekly total in base R? I'm thinking sapply? Now I did see one example using the as.Date function?
+
+romunov @ Slack
+create another variable extracting i.e. week number and year. you can use tappy, aggregate, or by to use these two variables to calculate a statistic for your target variable.
+https://stackoverflow.com/questions/3439478/calculating-summary-statistics-by-day-week-month
+
+Andrew @ Slack
+Maybe something like mutate(week = floor_date(date, unit=“week”))%>% group_by(week) %>% summarise(sum(whatever))
+
+amit @ Slack
