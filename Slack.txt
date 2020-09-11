@@ -14,3 +14,21 @@ In "base R (only)"how do I use lag to extract the new cases for each date ? I've
 Andrew @ Slack
 
 US$lag_cases = lag(US$cases, 1) then US[1,5] = US[1,2] then to US$new_cases = US$cases - US$lag_cases
+
+### ------------------------------------------------------------------------------------------------------------------
+###
+Question: How can I do a count by group in Base R?
+##
+#### Brandon Hurr @ Slack
+If you have a dataframe like iris you could count the number of rows after a split:
+lapply(split(iris, factor(iris$Species)), nrow)
+
+So you split by a factor and that gives you a list of dataframes that you use lapply to apply the function nrow over. The output is a list of numbers, you could unlist this and get an array of numbers that you could use further downstream
+##
+#### Tyler Grant Smith @ Slack
+also you could do the following:  table(iris$Species)
+
+which also works if you have more grouping vars, e.g. with(mtcars, as.data.frame(table(cyl, gear)))
+
+
+
